@@ -1,1 +1,59 @@
+:root {
+    --pink: #ff85a2;
+    --dark: #2d3436;
+    --glass: rgba(255, 255, 255, 0.7);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    font-family: 'Nunito', sans-serif; 
+    background: #fff5f7; 
+    color: var(--dark); 
+    scroll-behavior: smooth;
+}
+
+header {
+    height: 60vh;
+    background: linear-gradient(rgba(255,133,162,0.3), rgba(255,133,162,0.3)), url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000&auto=format&fit=crop') no-repeat center/cover;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+}
+
+.hero h1 { font-family: 'Montserrat', sans-serif; font-size: 4rem; color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.2); }
+.pink { color: #ff477e; }
+
+.container { max-width: 1100px; margin: auto; padding: 50px 20px; }
+.title { text-align: center; margin-bottom: 40px; font-size: 2.5rem; color: var(--pink); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+.card { 
+    background: white; border-radius: 20px; overflow: hidden; 
+    transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+.card:hover { transform: translateY(-10px); }
+.card img { width: 100%; height: 250px; object-fit: cover; }
+.info { padding: 20px; text-align: center; }
+.price { font-weight: bold; color: var(--pink); font-size: 1.2rem; margin: 10px 0; }
+
+button {
+    background: var(--pink); color: white; border: none; padding: 10px 25px;
+    border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.3s;
+}
+button:hover { background: #ff477e; }
+
+.checkout-area { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+@media (max-width: 768px) { .checkout-area { grid-template-columns: 1fr; } }
+
+.cart-glass, .payment-glass {
+    background: var(--glass); backdrop-filter: blur(10px);
+    padding: 30px; border-radius: 30px; border: 1px solid white;
+}
+
+.select-style { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 10px; border: 1px solid #ddd; }
+
+.form input, .form textarea {
+    width: 100%; padding: 15px; margin-top: 15px; border-radius: 15px; border: 1px solid #eee; font-family: inherit;
+}
+.send-btn { width: 100%; margin-top: 20px; background: #00b894; font-size: 1.1rem; }
+
+footer { text-align: center; padding: 50px; color: #aaa; }
 
