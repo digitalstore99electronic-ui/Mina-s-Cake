@@ -29,7 +29,6 @@
                 <button class="add-btn" onclick="addToCart('Энгийн бялуу', 20000)">Сагслах</button>
             </div>
         </div>
-
         <div class="card">
             <div class="img-box"><img src="2.jpg"></div>
             <div class="info">
@@ -38,7 +37,6 @@
                 <button class="add-btn" onclick="addToCart('Гүзээлзгэнэтэй бялуу', 26000)">Сагслах</button>
             </div>
         </div>
-
         <div class="card">
             <div class="img-box"><img src="3.jpg"></div>
             <div class="info">
@@ -47,7 +45,6 @@
                 <button class="add-btn" onclick="addToCart('Oreo Cheesecake', 14000)">Сагслах</button>
             </div>
         </div>
-
         <div class="card">
             <div class="img-box"><img src="4.jpg"></div>
             <div class="info">
@@ -56,7 +53,6 @@
                 <button class="add-btn" onclick="addToCart('Жижиг Tiramisu', 10000)">Сагслах</button>
             </div>
         </div>
-
         <div class="card">
             <div class="img-box"><img src="5.jpg"></div>
             <div class="info">
@@ -66,14 +62,11 @@
                     <option value="Gvzeelzgene-11000">Гүзээлзгэнэ - 11k</option>
                     <option value="Kiwi-10000">Киви - 10k</option>
                     <option value="Ners-13000">Нэрс - 13k</option>
-                    <option value="Toor-11000">Тоор - 11k</option>
-                    <option value="Cherry-13000">Cherry - 13k</option>
                     <option value="Mixed-15000">Холимог - 15k</option>
                 </select>
                 <button class="add-btn" style="margin-top:10px" onclick="addFruitCake()">Сагслах</button>
             </div>
         </div>
-
         <div class="card">
             <div class="img-box"><img src="6.jpg"></div>
             <div class="info">
@@ -82,7 +75,6 @@
                 <button class="add-btn" onclick="addToCart('Хүрээтэй бялуу', 22000)">Сагслах</button>
             </div>
         </div>
-
         <div class="card">
             <div class="img-box"><img src="7.jpg"></div>
             <div class="info">
@@ -91,7 +83,6 @@
                 <button class="add-btn" onclick="addToCart('Том Tiramisu', 17000)">Сагслах</button>
             </div>
         </div>
-
         <div class="card">
             <div class="img-box"><img src="8.jpg"></div>
             <div class="info">
@@ -101,7 +92,6 @@
                 <button class="add-btn" onclick="addDIY()">Сагслах</button>
             </div>
         </div>
-
         <div class="card">
             <div class="img-box"><img src="9.jpg"></div>
             <div class="info">
@@ -115,9 +105,9 @@
     <div id="payment-page" class="payment-overlay">
         <div class="payment-modal">
             <button class="close-btn" onclick="hidePayment()">⬅ БУЦАХ</button>
-            <h2 style="margin-top:20px">Таны захиалга</h2>
+            <h2 style="margin-top:20px">Захиалга баталгаажуулах</h2>
             <div id="cart-items-list" class="cart-items"></div>
-            <div class="total-bar">Нийт төлөх: <span id="total-amount">0</span> ₮</div>
+            <div class="total-bar">Нийт: <span id="total-amount">0</span> ₮</div>
 
             <div class="bank-info">
                 <p>🏦 <b>Хаан Банк:</b> <span id="acc-number">5465121770</span></p>
@@ -127,7 +117,7 @@
 
             <div class="input-group">
                 <input type="tel" id="user-phone" placeholder="Утасны дугаар">
-                <p style="font-size: 13px; margin: 10px 0 5px;">Баримтын зураг хавсаргах:</p>
+                <p style="font-size: 13px; margin: 10px 0;">Баримт хавсаргах (Зураг):</p>
                 <input type="file" id="receipt-file" accept="image/*">
             </div>
 
