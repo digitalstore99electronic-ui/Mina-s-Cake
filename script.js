@@ -2,7 +2,11 @@ let cart = [];
 
 function addToCart(name, price) {
     cart.push({ name, price });
-    renderCart();
+    updateCartCount();
+}
+
+function updateCartCount() {
+    document.getElementById('cart-count').innerText = cart.length;
 }
 
 function addFruitCake() {
@@ -12,51 +16,75 @@ function addFruitCake() {
 }
 
 function addDIY() {
-    const extra = parseInt(document.getElementById('extra-color').value) || 0;
+    const extra = parseInt(document.getElementById('diy-extra').value) || 0;
     const finalPrice = 23000 + (extra * 1000);
     addToCart(`DIY (${3 + extra} өнгө)`, finalPrice);
 }
 
-function renderCart() {
-    const list = document.getElementById('cart-list');
-    const totalDisp = document.getElementById('total-price');
-    if (cart.length === 0) { list.innerHTML = "Хоосон"; totalDisp.innerText = "0"; return; }
+function showPayment() {
+    if (cart.length === 0) return alert("Сагс хоосон байна!");
+    document.getElementById('payment-page').style.display = 'block';
+    renderCartItems();
+}
+
+function hidePayment() {
+    document.getElementById('payment-page').style.display = 'none';
+}
+
+function renderCartItems() {
+    const list = document.getElementById('cart-items-list');
+    const totalDisp = document.getElementById('total-amount');
     
-    list.innerHTML = cart.map(i => `<p>${i.name} - ${i.price.toLocaleString()}₮</p>`).join('');
-    const total = cart.reduce((a, b) => a + b.price, 0);
-    totalDisp.innerText = total.toLocaleString();
+    list.innerHTML = cart.map((item, index) => `
+        <div style="display:flex; justify-content:space-between; padding: 10px 0; border-bottom: 1px solid #f9f9f9;">
+            <span>${item.name}</span>
+            <b>${item.price.toLocaleString()}₮</b>
+        </div>
+    `).join('');
+    
+    const sum = cart.reduce((a, b) => a + b.price, 0);
+    totalDisp.innerText = sum.toLocaleString();
 }
 
-function copyAcc() {
-    const acc = document.getElementById('acc-num').innerText;
-    navigator.clipboard.writeText(acc).then(() => alert("Дансны дугаар амжилттай хуулагдлаа!"));
+function copyAccount() {
+    const acc = document.getElementById('acc-number').innerText;
+    navigator.clipboard.writeText(acc).then(() => {
+        alert("Дансны дугаар хуулагдлаа! Гүйлгээний утга дээр утасны дугаараа бичээрэй.");
+    });
 }
 
-async function sendOrder() {
+async function sendToTelegram() {
+    const phone = document.getElementById('user-phone').value;
+    const receipt = document.getElementById('receipt-file').files[0];
     const token = "8613168219:AAGt8Dte3hqEJu1_q8dR1NOYHvOrdSqghns";
     const chatId = "7437596154";
-    const phone = document.getElementById('phone').value;
-    const file = document.getElementById('receipt').files[0];
 
-    if (!phone || !file || cart.length === 0) return alert("Мэдээллээ бүрэн бөглөнө үү!");
+    if (!phone || !receipt) return alert("Утасны дугаар болон баримтын зургаа оруулна уу!");
 
-    const text = `🎂 ШИНЭ ЗАХИАЛГА\n📞 Утас: ${phone}\n🛒 Бараа: ${cart.map(i => i.name).join(', ')}\n💰 Нийт: ${document.getElementById('total-price').innerText}₮`;
+    const itemsText = cart.map(i => i.name).join(", ");
+    const total = document.getElementById('total-amount').innerText;
+    
+    const message = `🎂 ШИНЭ ЗАХИАЛГА\n━━━━━━━━━━━━━━\n📞 Утас: ${phone}\n🛒 Бараа: ${itemsText}\n💰 Нийт төлбөр: ${total}₮\n━━━━━━━━━━━━━━`;
 
     const formData = new FormData();
-    formData.append('chat_id', chatId);
-    formData.append('photo', file);
-    formData.append('caption', text);
+    formData.append("chat_id", chatId);
+    formData.append("photo", receipt);
+    formData.append("caption", message);
 
-    const res = await fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
-        method: 'POST',
-        body: formData
-    });
+    try {
+        const res = await fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
+            method: "POST",
+            body: formData
+        });
 
-    if (res.ok) {
-        alert("Амжилттай илгээгдлээ!");
-        cart = []; renderCart();
-    } else {
-        alert("Алдаа гарлаа. Дахин оролдоно уу.");
+        if (res.ok) {
+            alert("Захиалга амжилттай илгээгдлээ! Тантай удахгүй холбогдох болно.");
+            cart = [];
+            location.reload();
+        } else {
+            alert("Алдаа гарлаа. Дахин оролдоно уу.");
+        }
+    } catch (e) {
+        alert("Сүлжээний алдаа гарлаа.");
     }
 }
-
