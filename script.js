@@ -1,88 +1,59 @@
 let cart = [];
-let total = 0;
 
 function addToCart(name, price) {
     cart.push({ name, price });
-    updateCartUI();
+    renderCart();
 }
 
-function addFruitCake() {
-    const select = document.getElementById('fruit-type');
-    const [name, price] = select.value.split('-');
-    addToCart(`Жимстэй (${name})`, parseInt(price));
+function addFruit() {
+    const s = document.getElementById('fruit-cake');
+    const [name, price] = s.value.split('-');
+    addToCart("Жимстэй: " + name, parseInt(price));
 }
 
 function addDIY() {
-    const extra = parseInt(document.getElementById('extra-color').value) || 0;
-    const price = 23000 + (extra * 1000);
-    addToCart(`DIY (${3 + extra} өнгө)`, price);
+    const extra = parseInt(document.getElementById('diy-extra').value) || 0;
+    const finalPrice = 23000 + (extra * 1000);
+    addToCart(`DIY (${3 + extra} өнгө)`, finalPrice);
 }
 
-function updateCartUI() {
-    document.getElementById('cart-count').innerText = cart.length;
+function renderCart() {
+    const list = document.getElementById('cart-items');
+    const totalDisp = document.getElementById('total');
+    if(cart.length === 0) { list.innerHTML = "Сагс хоосон"; return; }
+    
+    list.innerHTML = cart.map(i => `<p>${i.name} - ${i.price}₮</p>`).join('');
+    const sum = cart.reduce((a, b) => a + b.price, 0);
+    totalDisp.innerText = sum.toLocaleString();
 }
 
-function goToPayment() {
-    if (cart.length === 0) return alert("Сагс хоосон байна!");
-    document.getElementById('main-page').classList.add('hidden');
-    document.getElementById('payment-page').classList.remove('hidden');
-    renderCartList();
-}
-
-function goToMain() {
-    document.getElementById('payment-page').classList.add('hidden');
-    document.getElementById('main-page').classList.remove('hidden');
-}
-
-function renderCartList() {
-    const list = document.getElementById('cart-list');
-    total = cart.reduce((sum, item) => sum + item.price, 0);
-    list.innerHTML = cart.map(i => `<p style="display:flex; justify-content:space-between"><span>${i.name}</span> <b>${i.price.toLocaleString()}₮</b></p>`).join('');
-    document.getElementById('total-price').innerText = total.toLocaleString();
-}
-
-function copyAccount() {
-    const acc = document.getElementById('acc-num').innerText;
-    navigator.clipboard.writeText(acc);
-    const msg = document.getElementById('copy-msg');
-    msg.innerText = "✅ Амжилттай хуулагдлаа!";
-    setTimeout(() => msg.innerText = "", 2000);
+function copyBank() {
+    const acc = document.getElementById('bank-acc').innerText;
+    navigator.clipboard.writeText(acc).then(() => alert("Данс амжилттай хуулагдлаа!"));
 }
 
 async function sendOrder() {
     const token = "8613168219:AAGt8Dte3hqEJu1_q8dR1NOYHvOrdSqghns";
     const chatId = "7437596154";
     const phone = document.getElementById('user-phone').value;
-    const fileInput = document.getElementById('receipt');
+    const file = document.getElementById('receipt-img').files[0];
 
-    if (!phone || fileInput.files.length === 0) {
-        return alert("Утасны дугаар болон баримтын зургаа оруулна уу!");
-    }
+    if (!phone || !file || cart.length === 0) return alert("Мэдээллээ бүрэн бөглөнө үү!");
 
-    const orderText = `🎂 ШИНЭ ЗАХИАЛГА!\n\n📞 Утас: ${phone}\n🛒 Бараанууд:\n${cart.map(i => `- ${i.name} (${i.price}₮)`).join('\n')}\n\n💰 Нийт: ${total}₮`;
+    const text = `🎂 ШИНЭ ЗАХИАЛГА\n📞 Утас: ${phone}\n🛒 Бараа: ${cart.map(i => i.name).join(', ')}\n💰 Нийт: ${cart.reduce((a,b)=>a+b.price,0)}₮`;
 
-    // Телеграм руу зураг илгээх
     const formData = new FormData();
     formData.append('chat_id', chatId);
-    formData.append('photo', fileInput.files[0]);
-    formData.append('caption', orderText);
+    formData.append('photo', file);
+    formData.append('caption', text);
 
-    try {
-        const response = await fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
-            method: 'POST',
-            body: formData
-        });
+    const res = await fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
+        method: 'POST',
+        body: formData
+    });
 
-        if (response.ok) {
-            alert("Захиалга амжилттай илгээгдлээ!");
-            cart = [];
-            updateCartUI();
-            goToMain();
-        } else {
-            alert("Алдаа гарлаа. Дахин оролдоно уу.");
-        }
-    } catch (err) {
-        alert("Сүлжээний алдаа гарлаа.");
+    if(res.ok) {
+        alert("Захиалга баримтын хамт амжилттай илгээгдлээ!");
+        cart = []; renderCart();
     }
 }
-
