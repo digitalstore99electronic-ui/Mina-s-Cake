@@ -3,6 +3,7 @@ let cart = [];
 function addToCart(name, price) {
     cart.push({ name, price });
     updateCartCount();
+    alert(name + " сагсанд нэмэгдлээ!");
 }
 
 function updateCartCount() {
@@ -35,7 +36,7 @@ function renderCartItems() {
     const list = document.getElementById('cart-items-list');
     const totalDisp = document.getElementById('total-amount');
     
-    list.innerHTML = cart.map((item, index) => `
+    list.innerHTML = cart.map(item => `
         <div style="display:flex; justify-content:space-between; padding: 10px 0; border-bottom: 1px solid #f9f9f9;">
             <span>${item.name}</span>
             <b>${item.price.toLocaleString()}₮</b>
@@ -48,9 +49,7 @@ function renderCartItems() {
 
 function copyAccount() {
     const acc = document.getElementById('acc-number').innerText;
-    navigator.clipboard.writeText(acc).then(() => {
-        alert("Дансны дугаар хуулагдлаа! Гүйлгээний утга дээр утасны дугаараа бичээрэй.");
-    });
+    navigator.clipboard.writeText(acc).then(() => alert("Данс хуулагдлаа!"));
 }
 
 async function sendToTelegram() {
@@ -59,32 +58,26 @@ async function sendToTelegram() {
     const token = "8613168219:AAGt8Dte3hqEJu1_q8dR1NOYHvOrdSqghns";
     const chatId = "7437596154";
 
-    if (!phone || !receipt) return alert("Утасны дугаар болон баримтын зургаа оруулна уу!");
+    if (!phone || !receipt) return alert("Утас болон баримтаа оруулна уу!");
 
     const itemsText = cart.map(i => i.name).join(", ");
     const total = document.getElementById('total-amount').innerText;
     
-    const message = `🎂 ШИНЭ ЗАХИАЛГА\n━━━━━━━━━━━━━━\n📞 Утас: ${phone}\n🛒 Бараа: ${itemsText}\n💰 Нийт төлбөр: ${total}₮\n━━━━━━━━━━━━━━`;
+    const message = `🎂 ШИНЭ ЗАХИАЛГА\n📞 Утас: ${phone}\n🛒 Бараа: ${itemsText}\n💰 Нийт: ${total}₮`;
 
     const formData = new FormData();
     formData.append("chat_id", chatId);
     formData.append("photo", receipt);
     formData.append("caption", message);
 
-    try {
-        const res = await fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
-            method: "POST",
-            body: formData
-        });
+    const res = await fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
+        method: "POST",
+        body: formData
+    });
 
-        if (res.ok) {
-            alert("Захиалга амжилттай илгээгдлээ! Тантай удахгүй холбогдох болно.");
-            cart = [];
-            location.reload();
-        } else {
-            alert("Алдаа гарлаа. Дахин оролдоно уу.");
-        }
-    } catch (e) {
-        alert("Сүлжээний алдаа гарлаа.");
+    if (res.ok) {
+        alert("Захиалга илгээгдлээ!");
+        cart = [];
+        location.reload();
     }
 }
