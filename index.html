@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mina's Cake | Luxury Bakery</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Mina's Cake | Төгс амт</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,105 +12,89 @@
 <header>
     <div class="hero">
         <h1>Mina's <span class="gold">Cake</span></h1>
-        <p>Урлаг шиг амт, Төгс мөчүүд</p>
+        <p>Хайраар урласан амттан</p>
     </div>
 </header>
 
 <main class="container">
-    <h2 class="title">Манай Цэс</h2>
     <div class="grid">
         <div class="card">
-            <div class="img-container">
-                <img src="1000017596.jpg" alt="Энгийн бялуу">
-            </div>
+            <div class="img-wrap"><img src="1000017596.jpg"></div>
             <div class="info">
                 <h3>Энгийн бялуу</h3>
                 <p class="price">20,000 ₮</p>
-                <button onclick="addToCart('Энгийн бялуу', 20000)">Сагслах</button>
+                <button class="add-btn" onclick="addToCart('Энгийн бялуу', 20000)">Сагслах</button>
             </div>
         </div>
 
         <div class="card">
-            <div class="img-container">
-                <img src="1000017597.jpg" alt="Гүзээлзгэнэтэй">
-            </div>
+            <div class="img-wrap"><img src="1000017597.jpg"></div>
             <div class="info">
                 <h3>Гүзээлзгэнэтэй</h3>
                 <p class="price">26,000 ₮</p>
-                <button onclick="addToCart('Гүзээлзгэнэтэй', 26000)">Сагслах</button>
+                <button class="add-btn" onclick="addToCart('Гүзээлзгэнэтэй', 26000)">Сагслах</button>
             </div>
         </div>
 
         <div class="card">
-            <div class="img-container">
-                <img src="1000017598.jpg" alt="Oreo">
-            </div>
+            <div class="img-wrap"><img src="1000017598.jpg"></div>
             <div class="info">
                 <h3>Oreo Cheesecake</h3>
                 <p class="price">13,000 ₮</p>
-                <button onclick="addToCart('Oreo Cheesecake', 13000)">Сагслах</button>
+                <button class="add-btn" onclick="addToCart('Oreo Cheesecake', 13000)">Сагслах</button>
             </div>
         </div>
 
         <div class="card">
-            <div class="img-container">
-                <img src="1000017599.jpg" alt="Tiramisu">
-            </div>
+            <div class="img-wrap"><img src="1000017599.jpg"></div>
             <div class="info">
                 <h3>Жижиг Tiramisu</h3>
                 <p class="price">8,000 ₮</p>
-                <button onclick="addToCart('Жижиг Tiramisu', 8000)">Сагслах</button>
+                <button class="add-btn" onclick="addToCart('Жижиг Tiramisu', 8000)">Сагслах</button>
             </div>
         </div>
 
         <div class="card">
-            <div class="img-container">
-                <img src="1000017601.jpg" alt="Хүрээтэй">
-            </div>
+            <div class="img-wrap"><img src="1000017601.jpg"></div>
             <div class="info">
                 <h3>Хүрээтэй бялуу</h3>
                 <p class="price">22,000 ₮</p>
-                <button onclick="addToCart('Хүрээтэй бялуу', 22000)">Сагслах</button>
+                <button class="add-btn" onclick="addToCart('Хүрээтэй бялуу', 22000)">Сагслах</button>
             </div>
         </div>
 
         <div class="card">
-            <div class="img-container">
-                <img src="1000017604.jpg" alt="DIY">
-            </div>
+            <div class="img-wrap"><img src="1000017604.jpg"></div>
             <div class="info">
                 <h3>DIY Бялуу багц</h3>
                 <p class="price">23,000 ₮</p>
-                <button onclick="addToCart('DIY Бялуу багц', 23000)">Сагслах</button>
+                <button class="add-btn" onclick="addToCart('DIY Бялуу багц', 23000)">Сагслах</button>
             </div>
         </div>
     </div>
 
-    <div class="checkout-section">
+    <div class="checkout-area">
         <div class="cart-box">
-            <h3>🛒 Сагс</h3>
-            <div id="cart-list">Хоосон байна</div>
-            <hr>
-            <p class="total">Нийт: <span id="total-price">0</span> ₮</p>
+            <h3>🛒 Таны Сагс</h3>
+            <div id="cart-list">Хоосон</div>
+            <div class="total-price">Нийт: <span id="total-price">0</span> ₮</div>
         </div>
 
-        <div class="order-box">
-            <h3>💳 Захиалах</h3>
-            <div class="bank-info">
+        <div class="payment-box">
+            <h3>💳 Төлбөр Тооцоо</h3>
+            <div class="bank-card">
                 <p>ХААН БАНК: <b>5465121770</b></p>
                 <p>Хүлээн авагч: <b>Л.Амин-Эрдэнэ</b></p>
+                <p class="note">* Гүйлгээний утга дээр утасны дугаараа бичээрэй.</p>
             </div>
-            <input type="text" id="user-name" placeholder="Таны нэр">
-            <input type="tel" id="user-phone" placeholder="Утасны дугаар">
-            <textarea id="user-msg" placeholder="Гүйлгээний утга..."></textarea>
-            <button class="send-btn" onclick="sendToTelegram()">Захиалга илгээх</button>
+            <div class="inputs">
+                <input type="text" id="name" placeholder="Таны нэр">
+                <input type="tel" id="phone" placeholder="Утасны дугаар">
+                <button class="final-btn" onclick="sendToTelegram()">Захиалга Баталгаажуулах</button>
+            </div>
         </div>
     </div>
 </main>
-
-<footer>
-    <p>© 2026 Mina's Cake. Made with Love.</p>
-</footer>
 
 <script src="script.js"></script>
 </body>
