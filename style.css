@@ -1,51 +1,56 @@
 :root {
     --gold: #C5A059;
-    --pink: #E89BB1;
     --dark: #2D2D2D;
-    --bg: #FDFBFB;
+    --soft: #FDFBFB;
 }
 
-body { font-family: 'Poppins', sans-serif; margin: 0; background: var(--bg); color: var(--dark); overflow-x: hidden; }
+body { font-family: 'Poppins', sans-serif; margin: 0; background: var(--soft); color: var(--dark); }
 
 header {
     background: white; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.02); position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 1000;
 }
 
-.logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; cursor: pointer; color: var(--dark); }
+.logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; cursor: pointer; }
 .gold { color: var(--gold); }
-nav span { margin: 0 15px; cursor: pointer; font-weight: 500; transition: 0.3s; }
-nav span:hover { color: var(--pink); }
+nav span { margin: 0 15px; cursor: pointer; font-weight: 500; }
 
-.cart-btn { background: var(--dark); color: white; padding: 10px 20px; border-radius: 40px; cursor: pointer; }
+.cart-icon { background: var(--dark); color: white; padding: 10px 20px; border-radius: 30px; cursor: pointer; }
 
-/* Animation */
+/* Хуудас шилжилт */
 .page { display: none; padding: 40px 8%; }
-.active { display: block; animation: fadeInUp 0.5s ease forwards; }
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.active { display: block; animation: fadeInUp 0.4s ease; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-.hero-section { text-align: center; margin-bottom: 50px; }
-.hero-section h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin-bottom: 5px; }
+.hero { text-align: center; margin-bottom: 50px; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 10px; }
 
-.cake-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-.cake-card { background: white; border-radius: 25px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; }
-.cake-card:hover { transform: translateY(-10px); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; }
+.card:hover { transform: translateY(-10px); }
 
-.img-wrapper { width: 100%; height: 300px; background: #f0f0f0; }
-.img-wrapper img { width: 100%; height: 100%; object-fit: cover; } /* Зургийг таслахгүй, гоё харагдуулна */
+.img-box { width: 100%; height: 300px; background: #eee; }
+.img-box img { width: 100%; height: 100%; object-fit: cover; }
 
-.cake-info { padding: 25px; text-align: center; }
-.cake-info h3 { margin: 0; font-size: 1.2rem; }
-.cake-info p { color: var(--gold); font-weight: 600; font-size: 1.3rem; margin: 10px 0; }
-.cake-info button { background: var(--dark); color: white; border: none; padding: 12px; width: 100%; border-radius: 15px; cursor: pointer; font-weight: 600; }
+.info { padding: 25px; text-align: center; }
+.price { color: var(--gold); font-weight: 600; font-size: 1.4rem; margin: 10px 0; }
+.add-btn { background: var(--dark); color: white; border: none; padding: 14px; border-radius: 12px; width: 100%; cursor: pointer; font-weight: 600; }
 
-/* Payment & Contact Box */
-.glass-box { max-width: 500px; margin: 0 auto; background: white; padding: 40px; border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
-.back-link { background: #f5f5f5; border: none; padding: 8px 15px; border-radius: 10px; cursor: pointer; margin-bottom: 20px; }
-.bank-card { background: #FFF9F0; padding: 25px; border-radius: 20px; text-align: center; margin: 25px 0; border: 1px dashed var(--gold); }
-.mini-btn { background: var(--gold); color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; }
+.glass-card { max-width: 500px; margin: 0 auto; background: white; padding: 35px; border-radius: 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); }
+.back-btn { background: none; border: 1px solid #ddd; padding: 8px 18px; border-radius: 50px; cursor: pointer; margin-bottom: 20px; }
 
-input[type="tel"] { width: 100%; padding: 15px; border: 1px solid #eee; border-radius: 15px; margin-bottom: 15px; font-size: 1rem; }
-.custom-file { display: block; padding: 20px; border: 2px dashed #ddd; border-radius: 15px; text-align: center; cursor: pointer; margin-bottom: 20px; color: #666; }
-.submit-order { width: 100%; background: var(--dark); color: white; border: none; padding: 18px; border-radius: 15px; font-weight: 700; cursor: pointer; font-size: 1.1rem; }
+.option-group { margin: 15px 0; }
+.option-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
+select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #eee; background: white; }
+
+.total-bar { font-size: 1.6rem; font-weight: 700; text-align: right; margin: 25px 0; color: var(--gold); border-top: 1px solid #eee; padding-top: 15px; }
+
+.bank-info { background: #FAF3E7; padding: 20px; border-radius: 15px; text-align: center; margin-bottom: 25px; border: 1px dashed var(--gold); }
+.copy-btn { background: var(--gold); color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; margin-top: 10px; }
+
+.form-group input { width: 100%; padding: 15px; border: 1px solid #eee; border-radius: 12px; margin-bottom: 15px; font-size: 1rem; }
+.upload-label { display: block; padding: 15px; border: 2px dashed var(--gold); border-radius: 12px; text-align: center; cursor: pointer; color: var(--gold); margin-bottom: 20px; font-weight: 600; }
+.submit-btn { background: var(--dark); color: white; border: none; padding: 18px; border-radius: 12px; width: 100%; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: 0.3s; }
+
+.contact-item { margin: 15px 0; font-size: 1.1rem; }
 .text-center { text-align: center; }
