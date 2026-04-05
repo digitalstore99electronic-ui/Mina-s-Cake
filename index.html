@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mina's Cake</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="hero">
+        <h1>Mina's <span class="gold">Cake</span></h1>
+        <p>Premium Homemade Bakery</p>
+    </div>
+</header>
+
+<main class="container">
+    <div class="grid">
+        <div class="card">
+            <img src="1000017596.jpg">
+            <div class="info">
+                <h3>Энгийн бялуу</h3>
+                <p>20,000 ₮</p>
+                <button onclick="addToCart('Энгийн бялуу', 20000)">Сагслах</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="1000017597.jpg">
+            <div class="info">
+                <h3>Гүзээлзгэнэтэй</h3>
+                <p>26,000 ₮</p>
+                <button onclick="addToCart('Гүзээлзгэнэтэй', 26000)">Сагслах</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="1000017598.jpg">
+            <div class="info">
+                <h3>Oreo Cheesecake</h3>
+                <p>13,000 ₮</p>
+                <button onclick="addToCart('Oreo Cheesecake', 13000)">Сагслах</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkout" id="checkout">
+        <div class="cart-box">
+            <h3>🛒 Сагс</h3>
+            <div id="cart-list">Хоосон</div>
+            <div class="total">Нийт: <span id="total-price">0</span> ₮</div>
+        </div>
+        
+        <div class="form-box">
+            <h3>💳 Захиалга</h3>
+            <p>Хаан Банк: 5465121770</p>
+            <input type="text" id="name" placeholder="Нэр">
+            <input type="tel" id="phone" placeholder="Утас">
+            <textarea id="msg" placeholder="Тайлбар..."></textarea>
+            <button class="send-btn" onclick="sendToTelegram()">Илгээх</button>
+        </div>
+    </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
 
