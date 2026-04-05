@@ -1,1 +1,86 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mina's Cake | Premium Bakery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="hero">
+        <h1 class="logo">Mina's <span class="accent">Cake</span></h1>
+        <p class="tagline">Төгс амт, төгс мөчүүд</p>
+        <a href="#menu" class="explore-btn">Цэстэй танилцах</a>
+    </div>
+</header>
+
+<main class="container" id="menu">
+    <h2 class="title">Манай Цэс</h2>
+    <div class="grid">
+        <div class="card">
+            <div class="image-box"><img src="1000017596.jpg" alt="Энгийн бялуу"></div>
+            <div class="content">
+                <h3>Энгийн бялуу</h3>
+                <p class="price">20,000 ₮</p>
+                <button class="cart-btn" onclick="addToCart('Энгийн бялуу', 20000)">Сагслах</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="image-box"><img src="1000017600.jpg" alt="Cheesecakes"></div>
+            <div class="content">
+                <h3>Жимстэй Cheesecake</h3>
+                <select id="fruit-type" class="fruit-select">
+                    <option value="Манго-10000">Манго - 10,000₮</option>
+                    <option value="Гүзээлзгэнэ-11000">Гүзээлзгэнэ - 11,000₮</option>
+                    <option value="Киви-10000">Киви - 10,000₮</option>
+                    <option value="Нэрс-13000">Нэрс - 13,000₮</option>
+                </select>
+                <button class="cart-btn" onclick="addFruitCake()">Сагслах</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="image-box"><img src="1000017604.jpg" alt="DIY"></div>
+            <div class="content">
+                <h3>DIY - Өөрөө чимэглэх</h3>
+                <p class="price">23,000 ₮</p>
+                <button class="cart-btn" onclick="addToCart('DIY - Өөрөө чимэглэх', 23000)">Сагслах</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<section class="checkout-section container" id="checkout">
+    <div class="cart-summary">
+        <h3>🛒 Таны Сагс</h3>
+        <div id="cart-list">Сагс хоосон байна</div>
+        <div class="total-bar">Нийт: <span id="total-price">0</span> ₮</div>
+    </div>
+
+    <div class="payment-form">
+        <h3>💳 Захиалга Баталгаажуулах</h3>
+        <div class="bank-details">
+            <p><strong>Хаан Банк:</strong> 5465121770</p>
+            <p><strong>Хүлээн авагч:</strong> Л.Амин-Эрдэнэ</p>
+        </div>
+        <div class="input-group">
+            <input type="text" id="name" placeholder="Таны нэр" required>
+            <input type="tel" id="phone" placeholder="Утасны дугаар" required>
+            <textarea id="msg" placeholder="Гүйлгээний утга эсвэл тусгай хүсэлт..."></textarea>
+            <button class="order-btn" onclick="sendToTelegram()">Захиалга Илгээх</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Mina's Cake. Утас: 8XXX-XXXX</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
 
