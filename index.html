@@ -1,1 +1,132 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mina's Cake | Luxury Desserts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="hero">
+        <h1>Mina's <span class="pink">Cake</span></h1>
+        <p>Урлаг шиг амт, сэтгэлд хоногших мөчүүд.</p>
+        <a href="#menu" class="btn-main">Цэс үзэх</a>
+    </div>
+</header>
+
+<main class="container" id="menu">
+    <h2 class="title">Манай Амттангууд</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="1000017596.jpg" alt="Энгийн бялуу">
+            <div class="info">
+                <h3>Энгийн бялуу</h3>
+                <p class="price">20,000 ₮</p>
+                <button onclick="addToCart('Энгийн бялуу', 20000)">Сагслах</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="1000017597.jpg" alt="Гүзээлзгэнэтэй">
+            <div class="info">
+                <h3>Гүзээлзгэнэтэй бялуу</h3>
+                <p class="price">26,000 ₮</p>
+                <button onclick="addToCart('Гүзээлзгэнэтэй бялуу', 26000)">Сагслах</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="1000017598.jpg" alt="Oreo">
+            <div class="info">
+                <h3>Oreo Cheesecake</h3>
+                <p class="price">13,000 ₮</p>
+                <button onclick="addToCart('Oreo Cheesecake', 13000)">Сагслах</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="1000017599.jpg" alt="Tiramisu Small">
+            <div class="info">
+                <h3>Жижиг Tiramisu</h3>
+                <p class="price">8,000 ₮</p>
+                <button onclick="addToCart('Жижиг Tiramisu', 8000)">Сагслах</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="1000017600.jpg" alt="Cheesecakes">
+            <div class="info">
+                <h3>Жимстэй Cheesecake</h3>
+                <select id="fruit-type" class="select-style">
+                    <option value="Манго-10000">Манго - 10,000₮</option>
+                    <option value="Гүзээлзгэнэ-11000">Гүзээлзгэнэ - 11,000₮</option>
+                    <option value="Киви-10000">Киви - 10,000₮</option>
+                    <option value="Нэрс-13000">Нэрс - 13,000₮</option>
+                </select>
+                <button onclick="addFruitCake()">Сагслах</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="1000017601.jpg" alt="Хүрээтэй бялуу">
+            <div class="info">
+                <h3>Хүрээтэй бялуу</h3>
+                <p class="price">22,000 ₮</p>
+                <button onclick="addToCart('Хүрээтэй бялуу', 22000)">Сагслах</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="1000017602.jpg" alt="Tiramisu Big">
+            <div class="info">
+                <h3>Tiramisu (Том)</h3>
+                <p class="price">17,000 ₮</p>
+                <button onclick="addToCart('Том Tiramisu', 17000)">Сагслах</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="1000017604.jpg" alt="DIY">
+            <div class="info">
+                <h3>DIY - Өөрөө чимэглэх</h3>
+                <p class="price">23,000 ₮</p>
+                <button onclick="addToCart('DIY - Өөрөө чимэглэх', 23000)">Сагслах</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<section class="checkout-area container" id="checkout">
+    <div class="cart-glass">
+        <h3>🛒 Таны Сагс</h3>
+        <div id="cart-list">Сагс хоосон байна</div>
+        <hr>
+        <p class="total">Нийт: <span id="total-price">0</span> ₮</p>
+    </div>
+
+    <div class="payment-glass">
+        <h3>💳 Төлбөр Тооцоо</h3>
+        <div class="bank-info">
+            <p><strong>Хаан Банк:</strong> 5465121770</p>
+            <p><strong>Хүлээн авагч:</strong> Л.Амин-Эрдэнэ</p>
+        </div>
+        <div class="form">
+            <input type="text" id="name" placeholder="Таны нэр" required>
+            <input type="tel" id="phone" placeholder="Утасны дугаар" required>
+            <textarea id="msg" placeholder="Гүйлгээний утга эсвэл нэмэлт тайлбар..."></textarea>
+            <button class="send-btn" onclick="sendToTelegram()">Захиалга Илгээх</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Mina's Cake. Бүх эрх хуулиар хамгаалагдсан.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
 
