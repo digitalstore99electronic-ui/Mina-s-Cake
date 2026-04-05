@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mina's Cake | Luxury</title>
+    <title>Mina's Cake | Dundgovi</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,66 +12,92 @@
 <header>
     <div class="logo" onclick="showPage('home-page')">Mina's <span class="gold">Cake</span></div>
     <nav>
-        <span onclick="showPage('home-page')">Нүүр</span>
+        <span onclick="showPage('home-page')">Нүүр хуудас</span>
         <span onclick="showPage('contact-page')">Холбоо барих</span>
     </nav>
-    <div class="cart-btn" onclick="showPage('payment-page')">
+    <div class="cart-icon" onclick="showPage('payment-page')">
         🛒 Сагс: <span id="cart-count">0</span>
     </div>
 </header>
 
 <main>
     <div id="home-page" class="page active">
-        <div class="hero-section">
+        <div class="hero">
             <h1>Art of Baking</h1>
-            <p>Хайраар урласан амт бүхэн таны аз жаргал</p>
+            <p>Дундговь аймаг - Хайраар урласан амт</p>
         </div>
-
-        <div class="cake-grid">
-            <div class="cake-card"><div class="img-wrapper"><img src="1.jpg"></div><div class="cake-info"><h3>Энгийн бялуу</h3><p>20,000 ₮</p><button onclick="addToCart('Энгийн бялуу', 20000)">Сагслах</button></div></div>
-            <div class="cake-card"><div class="img-wrapper"><img src="2.jpg"></div><div class="cake-info"><h3>Гүзээлзгэнэтэй</h3><p>26,000 ₮</p><button onclick="addToCart('Гүзээлзгэнэтэй', 26000)">Сагслах</button></div></div>
-            <div class="cake-card"><div class="img-wrapper"><img src="3.jpg"></div><div class="cake-info"><h3>Oreo cheese cake</h3><p>14,000 ₮</p><button onclick="addToCart('Oreo Cake', 14000)">Сагслах</button></div></div>
-            <div class="cake-card"><div class="img-wrapper"><img src="4.jpg"></div><div class="cake-info"><h3>Mini Tiramisu</h3><p>10,000 ₮</p><button onclick="addToCart('Mini Tiramisu', 10000)">Сагслах</button></div></div>
-            <div class="cake-card"><div class="img-wrapper"><img src="5.jpg"></div><div class="cake-info"><h3>Fruit Mix</h3><p>15,000 ₮</p><button onclick="addToCart('Fruit Mix', 15000)">Сагслах</button></div></div>
-            <div class="cake-card"><div class="img-wrapper"><img src="6.jpg"></div><div class="cake-info"><h3>Хүрээтэй бялуу</h3><p>22,000 ₮</p><button onclick="addToCart('Хүрээтэй бялуу', 22000)">Сагслах</button></div></div>
-            <div class="cake-card"><div class="img-wrapper"><img src="7.jpg"></div><div class="cake-info"><h3>Big Tiramisu</h3><p>17,000 ₮</p><button onclick="addToCart('Big Tiramisu', 17000)">Сагслах</button></div></div>
-            <div class="cake-card"><div class="img-wrapper"><img src="8.jpg"></div><div class="cake-info"><h3>DIY Kit</h3><p>23,000 ₮</p><button onclick="addToCart('DIY Kit', 23000)">Сагслах</button></div></div>
-            <div class="cake-card"><div class="img-wrapper"><img src="9.jpg"></div><div class="cake-info"><h3>Chocolate Mini</h3><p>25,000 ₮</p><button onclick="addToCart('Chocolate Mini', 25000)">Сагслах</button></div></div>
+        
+        <div class="grid">
+            <div class="card"><div class="img-box"><img src="1.jpg"></div><div class="info"><h3>Энгийн бялуу</h3><p class="price">20,000 ₮</p><button class="add-btn" onclick="addToCart('Энгийн бялуу', 20000)">Сагслах</button></div></div>
+            <div class="card"><div class="img-box"><img src="2.jpg"></div><div class="info"><h3>Гүзээлзгэнэтэй</h3><p class="price">26,000 ₮</p><button class="add-btn" onclick="addToCart('Гүзээлзгэнэтэй', 26000)">Сагслах</button></div></div>
+            <div class="card"><div class="img-box"><img src="3.jpg"></div><div class="info"><h3>Oreo cheese cake</h3><p class="price">14,000 ₮</p><button class="add-btn" onclick="addToCart('Oreo Cake', 14000)">Сагслах</button></div></div>
+            <div class="card"><div class="img-box"><img src="4.jpg"></div><div class="info"><h3>Жижиг Tiramisu</h3><p class="price">10,000 ₮</p><button class="add-btn" onclick="addToCart('Жижиг Tiramisu', 10000)">Сагслах</button></div></div>
+            <div class="card"><div class="img-box"><img src="5.jpg"></div><div class="info"><h3>Жимстэй бялуу</h3><p class="price">15,000 ₮</p><button class="add-btn" onclick="addToCart('Жимстэй бялуу', 15000)">Сагслах</button></div></div>
+            <div class="card"><div class="img-box"><img src="6.jpg"></div><div class="info"><h3>Хүрээтэй бялуу</h3><p class="price">22,000 ₮</p><button class="add-btn" onclick="addToCart('Хүрээтэй бялуу', 22000)">Сагслах</button></div></div>
+            <div class="card"><div class="img-box"><img src="7.jpg"></div><div class="info"><h3>Том Tiramisu</h3><p class="price">17,000 ₮</p><button class="add-btn" onclick="addToCart('Том Tiramisu', 17000)">Сагслах</button></div></div>
+            <div class="card"><div class="img-box"><img src="8.jpg"></div><div class="info"><h3>DIY Cake Kit</h3><p class="price">23,000 ₮</p><button class="add-btn" onclick="addToCart('DIY Cake Kit', 23000)">Сагслах</button></div></div>
+            <div class="card"><div class="img-box"><img src="9.jpg"></div><div class="info"><h3>Chocolate Mini</h3><p class="price">25,000 ₮</p><button class="add-btn" onclick="addToCart('Chocolate Mini', 25000)">Сагслах</button></div></div>
         </div>
     </div>
 
     <div id="payment-page" class="page">
-        <div class="glass-box">
-            <button class="back-link" onclick="showPage('home-page')">← Буцах</button>
+        <div class="glass-card">
+            <button class="back-btn" onclick="showPage('home-page')">← Буцах</button>
             <h2>Захиалга Баталгаажуулах</h2>
-            <div id="cart-list" class="cart-summary"></div>
-            <div class="total-price">Нийт: <span id="final-total">0</span> ₮</div>
-
-            <div class="bank-card">
-                <p>🏦 <b>Хаан Банк:</b> <span id="acc-num">5465121770</span></p>
-                <p>👤 <b>Л.Амин-Эрдэнэ</b></p>
-                <button class="mini-btn" onclick="copyAcc()">Данс хуулах</button>
+            <div id="cart-items-list" class="cart-items"></div>
+            
+            <div class="option-group">
+                <label>🍓 Нэмэлт жимс:</label>
+                <select id="fruit-select" onchange="renderCart()">
+                    <option value="0">Сонгохгүй (+0₮)</option>
+                    <option value="10000">Манго (+10,000₮)</option>
+                    <option value="11000">Гүзээлзгэнэ (+11,000₮)</option>
+                    <option value="10000">Киви (+10,000₮)</option>
+                    <option value="13000">Нэрс (+13,000₮)</option>
+                    <option value="11000">Тоор (+11,000₮)</option>
+                    <option value="13000">Черри (+13,000₮)</option>
+                    <option value="15000">Холимог (+15,000₮)</option>
+                </select>
             </div>
 
-            <div class="form-area">
-                <input type="tel" id="user-tel" placeholder="Утасны дугаар">
-                <label class="custom-file">
+            <div class="option-group">
+                <label>🚚 Хүргэлт (Дундговь):</label>
+                <select id="delivery-select" onchange="renderCart()">
+                    <option value="0">Өөрөө очиж авах (+0₮)</option>
+                    <option value="3000">Хүргэлтээр авах (+3,000₮)</option>
+                </select>
+            </div>
+
+            <div class="total-bar">Нийт: <span id="total-amount">0</span> ₮</div>
+
+            <div class="bank-info">
+                <p>🏦 <b>Хаан Банк:</b> <span id="acc-num">5465121770</span></p>
+                <p>👤 <b>Л.Амин-Эрдэнэ</b></p>
+                <button class="copy-btn" onclick="copyAcc()">Данс хуулах</button>
+            </div>
+
+            <div class="form-group">
+                <input type="tel" id="phone" placeholder="Утасны дугаар">
+                <label class="upload-label">
                     <span>📷 Баримт хавсаргах</span>
-                    <input type="file" id="receipt-img" accept="image/*" hidden>
+                    <input type="file" id="receipt" accept="image/*" hidden>
                 </label>
-                <button class="submit-order" onclick="sendOrder()">ЗАХИАЛГА ИЛГЭЭХ</button>
+                <button class="submit-btn" onclick="sendOrder()">ЗАХИАЛГА ИЛГЭЭХ</button>
             </div>
         </div>
     </div>
 
     <div id="contact-page" class="page">
-        <div class="glass-box text-center">
-            <button class="back-link" onclick="showPage('home-page')">← Буцах</button>
-            <h2>Холбоо Барих</h2>
-            <div class="contact-list">
-                <p>📞 <b>Утас:</b> 88953099</p>
-                <p>📸 <b>Facebook:</b> <a href="https://www.facebook.com/share/1JPnXb3Vm3/" target="_blank">Mina's Cake</a></p>
-                <p>📍 <b>Байршил:</b> Дундговь аймаг</p>
+        <div class="glass-card text-center">
+            <button class="back-btn" onclick="showPage('home-page')">← Буцах</button>
+            <h2>Бидэнтэй холбогдох</h2>
+            <div class="contact-info">
+                <div class="contact-item">📞 <b>Утас:</b> 88953099</div>
+                <div class="contact-item">🔵 <b>Facebook:</b> <a href="https://www.facebook.com/share/1JPnXb3Vm3/" target="_blank">Mina's Cake</a></div>
+                <div class="contact-item">📍 <b>Байршил:</b> Дундговь аймаг</div>
+                <div class="contact-item" style="margin-top: 20px; font-size: 0.9rem; color: #666;">
+                    * Хүргэлтийн захиалгыг 24-48 цагийн өмнө өгнө үү.
+                </div>
             </div>
         </div>
     </div>
