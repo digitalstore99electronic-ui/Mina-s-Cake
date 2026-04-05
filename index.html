@@ -10,7 +10,7 @@
 <body>
 
 <div class="top-notice">
-    ⚠️ АНХААРУУЛГА: Манайх сайтаар тулгаж захиалга авахгүй!
+    ⚠️ АНХААРУУЛГА: Манайх сайтаар тулгаж захиалга авахгүй байгаа тул зөвхөн зааврын дагуу захиалга өгнө үү!
 </div>
 
 <header>
@@ -36,17 +36,15 @@
                 <div class="img-box"><img src="5.jpg"></div>
                 <div class="info">
                     <h3>Жимстэй бялуу</h3>
-                    <div class="fruit-picker">
-                        <select id="special-fruit" onchange="updateFruitPrice(this)">
-                            <option value="8000">Манго (8,000₮)</option>
-                            <option value="9000">Гүзээлзгэнэ (9,000₮)</option>
-                            <option value="8000">Киви (8,000₮)</option>
-                            <option value="11000">Нэрс (11,000₮)</option>
-                            <option value="9000">Тоор (9,000₮)</option>
-                            <option value="11000">Черри (11,000₮)</option>
-                            <option value="15000">Холимог (15,000₮)</option>
-                        </select>
-                    </div>
+                    <select id="special-fruit" onchange="updateFruitPrice(this)">
+                        <option value="8000">Манго (8,000₮)</option>
+                        <option value="9000">Гүзээлзгэнэ (9,000₮)</option>
+                        <option value="8000">Киви (8,000₮)</option>
+                        <option value="11000">Нэрс (11,000₮)</option>
+                        <option value="9000">Тоор (9,000₮)</option>
+                        <option value="11000">Черри (11,000₮)</option>
+                        <option value="15000">Холимог (15,000₮)</option>
+                    </select>
                     <p class="price" id="fruit-display-price">8,000 ₮</p>
                     <button class="add-btn" onclick="addFruitCake()">Сагслах</button>
                 </div>
@@ -64,16 +62,22 @@
             <button class="back-btn" onclick="showPage('home-page')">← Буцах</button>
             <h2>Захиалга баталгаажуулах</h2>
             <div id="cart-items-list"></div>
-            <div class="total-bar">Нийт: <span id="total-amount">0</span> ₮</div>
+            <div class="total-bar">Нийт төлөх: <span id="total-amount">0</span> ₮</div>
+            
             <div class="bank-card">
                 <p>🏦 Хаан Банк: <b>5465121770</b></p>
                 <p>👤 Л.Амин-Эрдэнэ</p>
                 <button class="copy-btn" onclick="copyAcc()">Данс хуулах</button>
             </div>
+
             <div class="form-group">
+                <label style="display:block; margin-bottom:5px; font-size:0.9rem;">Бялууны загвар:</label>
+                <textarea id="cake-design" placeholder="Та хүссэн загвараа бичээд явуулна уу" rows="3"></textarea>
+                
                 <input type="tel" id="user-phone" placeholder="Утасны дугаар">
+                
                 <label class="file-label">
-                    <span>📷 Баримтын зураг хавсаргах</span>
+                    <span>📷 Төлбөрийн баримт хавсаргах</span>
                     <input type="file" id="receipt-img" accept="image/*" hidden>
                 </label>
                 <button class="submit-btn" onclick="sendToTelegram()">ЗАХИАЛГА ИЛГЭЭХ</button>
@@ -85,12 +89,11 @@
         <div class="glass-card text-center">
             <button class="back-btn" onclick="showPage('home-page')">← Буцах</button>
             <h2 style="margin-top:20px;">Холбоо барих</h2>
-            <div style="text-align: left; margin: 20px 0;">
-                <p>📞 <b>Утас:</b> 88953099</p>
+            <div class="contact-links">
+                <p>📞 <b>Утас:</b> <a href="tel:88953099" class="link-btn">88953099 (Залгах)</a></p>
+                <p>🔵 <b>Facebook:</b> <a href="https://m.me/100083315663731" target="_blank" class="link-btn">Mina's Cake (Чат бичих)</a></p>
                 <p>📍 <b>Байршил:</b> Дундговь аймаг</p>
-                <p>🔵 <b>Facebook:</b> Mina's Cake</p>
             </div>
-            <p style="color: #888; font-size: 0.9rem;">Бид хайраар бялуугаа урладаг.</p>
         </div>
     </div>
 </main>
