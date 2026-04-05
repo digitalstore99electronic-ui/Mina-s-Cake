@@ -1,5 +1,6 @@
 let cart = [];
 
+// Хуудас хооронд шилжих (Үсрэх) функц
 function showPage(id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById(id).classList.add('active');
@@ -19,9 +20,9 @@ function addToCart(name, price) {
 
 function addFruitCake() {
     const s = document.getElementById('special-fruit');
-    const totalPrice = parseInt(s.value);
-    const fruitName = s.options[s.selectedIndex].text.split(' (')[0];
-    cart.push({ name: `Жимстэй бялуу (${fruitName})`, price: totalPrice });
+    const price = parseInt(s.value);
+    const fruit = s.options[s.selectedIndex].text.split(' (')[0];
+    cart.push({ name: `Жимстэй бялуу (${fruit})`, price: price });
     updateUI();
 }
 
@@ -32,12 +33,12 @@ function updateUI() {
 
 function renderCart() {
     const list = document.getElementById('cart-items-list');
-    const delivery = parseInt(document.getElementById('delivery-select').value) || 0;
-    list.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between; margin:10px 0;"><span>${i.name}</span><b>${i.price.toLocaleString()}₮</b></div>`).join('');
-    const subtotal = cart.reduce((a, b) => a + b.price, 0);
-    document.getElementById('total-amount').innerText = (subtotal + delivery).toLocaleString();
+    list.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between; margin:10px 0; border-bottom:1px solid #f0f0f0; padding-bottom:5px;"><span>${i.name}</span><b>${i.price.toLocaleString()}₮</b></div>`).join('');
+    const total = cart.reduce((a, b) => a + b.price, 0);
+    document.getElementById('total-amount').innerText = total.toLocaleString();
 }
 
+// Данс хуулах болон мэдэгдэл гаргах
 function copyAcc() {
     navigator.clipboard.writeText("5465121770").then(() => {
         alert("Амжилттай хууллаа");
@@ -47,7 +48,7 @@ function copyAcc() {
 async function sendToTelegram() {
     const phone = document.getElementById('user-phone').value;
     const photo = document.getElementById('receipt-img').files[0];
-    if(!phone || !photo || cart.length === 0) return alert("Мэдээллээ бүрэн бөглөнө үү!");
+    if(!phone || !photo || cart.length === 0) return alert("Мэдээллээ бүрэн оруулна уу!");
 
     const token = "8613168219:AAGt8Dte3hqEJu1_q8dR1NOYHvOrdSqghns";
     const chatId = "7437596154";
@@ -64,7 +65,7 @@ async function sendToTelegram() {
     try {
         const res = await fetch(`https://api.telegram.org/bot${token}/sendPhoto`, { method: "POST", body: formData });
         if(res.ok) {
-            alert("Захиалга илгээгдлээ!");
+            alert("Захиалга амжилттай илгээгдлээ!");
             cart = [];
             location.reload();
         }
